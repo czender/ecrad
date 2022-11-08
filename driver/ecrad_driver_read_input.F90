@@ -486,6 +486,7 @@ contains
           call file%get('sw_albedo_direct', single_level%sw_albedo_direct, do_transp=.false.)
         end if
       else
+        write (6,'(a)') 'csz++ Driver reports doing transpose'
         call file%get('sw_albedo',    single_level%sw_albedo, do_transp=.true.)
         if (file%exists('sw_albedo_direct')) then
           call file%get('sw_albedo_direct', single_level%sw_albedo_direct, do_transp=.true.)

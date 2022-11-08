@@ -140,6 +140,13 @@ program ecrad_driver
   end if
 
   ! Albedo/emissivity intervals may be specified like this
+  ! csz++ Define spectral bands for surface albedo on RRTM grid in monotonically increasing order by wavelength
+  call config%define_sw_albedo_intervals(14, &
+       & [263.15e-9_jprb, 344.82e-9_jprb, 441.50e-9_jprb, 625.00e-9_jprb, 778.21e-9_jprb, &
+       & 1242.23e-9_jprb,1298.70e-9_jprb,1626.01e-9_jprb,1941.74e-9_jprb,2150.53e-9_jprb, &
+       & 2500.00e-9_jprb,3076.92e-9_jprb,3846.15e-9_jprb,12195.1e-9_jprb], &
+       &   [1,2,3,4,5,6,7,8,9,10,11,12,13,14], &
+       &   do_nearest=.false.)
   !call config%define_sw_albedo_intervals(6, &
   !     &  [0.25e-6_jprb, 0.44e-6_jprb, 0.69e-6_jprb, &
   !     &     1.19_jprb, 2.38e-6_jprb], [1,2,3,4,5,6], &

@@ -258,7 +258,7 @@ contains
         ! Albedos averaged accurately to ecRad spectral bands
         nalbedoband = size(config%sw_albedo_weights,1)
         if (size(this%sw_albedo,2) /= nalbedoband) then
-          write(nulerr,'(a,i0,a)') '*** Error: single_level%sw_albedo does not have the expected ', &
+           write(nulerr,'(a,i0,a)') '*** Error: single_level%sw_albedo does not have the expected ', &
                &  nalbedoband, ' bands'
           call radiation_abort()
         end if
@@ -279,6 +279,9 @@ contains
 
         sw_albedo_diffuse = transpose(sw_albedo_band(istartcol:iendcol, &
              &                              config%i_band_from_reordered_g_sw))
+        
+        write (6,'(a,i3)') 'csz++ nalbedoband = ',nalbedoband
+        write (6,'(a,i3)') 'csz++ config%n_bands_sw = ',config%n_bands_sw
         if (allocated(this%sw_albedo_direct)) then
           sw_albedo_band = 0.0_jprb
           do jband = 1,config%n_bands_sw

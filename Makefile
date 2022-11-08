@@ -9,8 +9,11 @@
 HAVE_NFCONFIG := $(shell nf-config --version 2> /dev/null)
 ifdef HAVE_NFCONFIG
 $(info *** Using nf-config to obtain NetCDF flags)
-NETCDF_INCLUDE = $(shell nf-config --fflags)
-NETCDF_LIB     = $(shell nf-config --flibs)
+#csz++
+NETCDF_INCLUDE = -I/opt/homebrew/Cellar/netcdf-fortran/4.6.0/include -I/opt/homebrew/Cellar/netcdf/4.9.0/include 
+NETCDF_LIB     = -L/opt/homebrew/Cellar/netcdf-fortran/4.6.0/lib -L/opt/homebrew/Cellar/netcdf/4.9.0/lib  -lnetcdff -lnetcdf
+#NETCDF_INCLUDE = $(shell nf-config --fflags)
+#NETCDF_LIB     = $(shell nf-config --flibs)
 ifeq ($(shell nf-config --has-nc4),yes)
 NETCDF4        = 1
 endif
